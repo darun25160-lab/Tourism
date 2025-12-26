@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GT HOLIDAYS - Tourism</title>
+  <!-- ✅ Google Fonts for Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Quicksand:wght@400;600&family=Poppins:wght@400;500&family=Roboto+Slab:wght@400;700&family=Great+Vibes&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #004d40;
+      overflow-x: hidden;
+      position: relative;
+      height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    /* === 3D FX Animated Background === */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, #b2fef7, transparent 70%),
+                  radial-gradient(circle at 70% 70%, #c8e6c9, transparent 70%),
+                  linear-gradient(to bottom right, #e0f7fa, #f1f8e9);
+      animation: moveBackground 12s infinite linear alternate;
+      z-index: -1;
+      transform: scale(1.2);
+      filter: blur(4px);
+    }
+
+    @keyframes moveBackground {
+      0% { transform: translate(0, 0) scale(1.2); }
+      50% { transform: translate(-50px, -50px) scale(1.25); }
+      100% { transform: translate(50px, 50px) scale(1.2); }
+    }
+
+    /* === MAIN HEADING === */
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin-top: 10px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #004d40, #00acc1, #004d40);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 26px;
+      margin-top: 8px;
+      color: #004d40;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+    /* === Paragraph (Now Black Color) === */
+    p {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      width: 80%;
+      margin: 25px auto;
+      line-height: 1.8;
+      background: rgba(255,255,255,0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      text-align: justify;
+      letter-spacing: 0.4px;
+      color: #000000; /* ← Black font color */
+    }
+
+    /* === Destination Cards === */
+    .item {
+      display: inline-block;
+      margin: 20px;
+      transition: transform 0.5s ease;
+      font-family: 'Roboto Slab', serif;
+    }
+
+    .item:hover {
+      transform: scale(1.05) rotateY(10deg);
+    }
+
+    h3 {
+      color: #00695c;
+      margin-bottom: 10px;
+      font-size: 20px;
+      letter-spacing: 1px;
+    }
+
+    img {
+      width: 250px;
+      height: 160px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    img:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* === Package Table === */
+    table {
+      margin: 40px auto;
+      border-collapse: collapse;
+      width: 80%;
+      background-color: rgba(255,255,255,0.9);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      perspective: 1000px;
+      transform: rotateX(2deg);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    th, td {
+      border: 1px solid #999;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #004d40;
+      color: white;
+      font-weight: 600;
+      font-size: 17px;
+    }
+
+    td {
+      background-color: #f9f9f9;
+      transition: background-color 0.3s;
+      font-size: 15px;
+    }
+
+    tr:hover td {
+      background-color: #e0f2f1;
+    }
+
+    /* === Booking Form Styling === */
+    .booking-form {
+      width: 60%;
+      margin: 50px auto;
+      background: rgba(255,255,255,0.95);
+      padding: 25px 35px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: left;
+      transform: perspective(800px) rotateX(1deg);
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .booking-form h2 {
+      text-align: center;
+      color: #004d40;
+      margin-bottom: 25px;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #00695c;
+      margin-bottom: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #004d40;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0,77,64,0.5);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background-color: #004d40;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Roboto Slab', serif;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00796b;
+      transform: scale(1.02);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="main-title">GT HOLIDAYS</div>
+
+  <h1>"The world is a book, and those who do not travel read only one page."</h1>
+  
+  <p>Tourism is the activity of traveling for pleasure, business, or other purposes, involving temporary stays away from home for recreation, culture, or relaxation, and is a massive global industry supporting economies, creating jobs, and fostering cultural exchange, while also presenting challenges like environmental impact. It ranges from visiting landmarks like the Taj Mahal to eco-tourism in Kaziranga National Park or relaxing on beaches, utilizing services from hotels and airlines to local guides.</p>
+
+  <div class="item DUBAI">
+    <h3>DUBAI</h3>
+    <img src="https://www.arabnews.com/sites/default/files/styles/n_670_395/public/2020/07/11/2184041-115360585.jpg?itok=b4efYEF">
+  </div>
+
+  <div class="item BALI">
+    <h3>BALI</h3>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW9Zzxt5trjy9pVRBk4VOQ2AqCd8c_X4sRXQ&s">
+  </div>
+
+  <div class="item THAILAND">
+    <h3>THAILAND</h3>
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/43/44/db/photo0jpg.jpg?w=900&h=500&s=1">
+  </div>
+
+  <div class="item MALDIVES">
+    <h3>MALDIVES</h3>
+    <img src="https://www.baros.com/wp-content/uploads/2023/01/History-of-Maldives-tourism-Baros-Maldives-the-icon-of-responsible-luxury-tourism.jpg">
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Places</th>
+        <th>Packages</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>DUBAI</td><td>From 29,999</td></tr>
+      <tr><td>BALI</td><td>From 19,999</td></tr>
+      <tr><td>THAILAND</td><td>From 49,999</td></tr>
+      <tr><td>MALDIVES</td><td>From 64,999</td></tr>
+    </tbody>
+  </table>
+
+  <div class="booking-form">
+    <h2>Book Your Dream Trip</h2>
+    <form>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" name="contact" placeholder="Enter your phone number" required>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+  </div>
+</body>
+</html>
